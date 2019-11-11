@@ -3,13 +3,10 @@ package edu.cftic.sql_app.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
-
 /**
  * Created by vale on 1/06/16.
  */
 public class Coche implements Comparable, Parcelable {
-
     private int id;
     private String modelo;
     private Persona persona;
@@ -24,49 +21,36 @@ public class Coche implements Comparable, Parcelable {
     @Override
     public int compareTo(Object o) {
         int resultado = 0;
-
-            Coche c = (Coche)o;
-            resultado = this.modelo.compareTo(c.modelo);
-
+        Coche c = (Coche)o;
+        resultado = this.modelo.compareTo(c.modelo);
         return resultado;
     }
 
-    public Coche (int id, String modelo)
-    {
+    public Coche (int id, String modelo){
         this.id = id;
         this.modelo = modelo;
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getModelo() {
         return modelo;
     }
-
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-
-
     public Coche (String modelo)
     {
         this.modelo = modelo;
     }
-
     public Persona getPersona() {
         return persona;
     }
-
     public Coche () {}
-
-    public Coche (String modelo, Persona persona)
-    {
+    public Coche (String modelo, Persona persona){
         this.modelo = modelo;
         this.persona = persona;
     }
@@ -78,13 +62,10 @@ public class Coche implements Comparable, Parcelable {
                 ", modelo='" + modelo + '\'' +
                 '}';
     }
-
-
     @Override
     public int describeContents() {
         return 0;
     }
-
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
@@ -92,7 +73,6 @@ public class Coche implements Comparable, Parcelable {
         parcel.writeParcelable(persona, 0);
 
     }
-
     public static final Parcelable.Creator<Coche> CREATOR = new Parcelable.Creator<Coche>(){
 
         @Override
@@ -105,14 +85,11 @@ public class Coche implements Comparable, Parcelable {
             return new Coche[size];
         }
     };
-
-    public Coche (Parcel parcel)
-    {
+    public Coche (Parcel parcel){
         this.id = parcel.readInt();
         this.modelo = parcel.readString();
         this.persona = parcel.readParcelable(Persona.class.getClassLoader());
 
     }
-
 
 }
