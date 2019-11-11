@@ -23,6 +23,8 @@ import edu.cftic.sql_app.dto.Persona;
 public class MainActivity extends AppCompatActivity {
 
     private BaseDatosCochesPersona baseDatosCochesPersona;
+    public Button boton_cargar;
+    public Button boton_mostrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +34,19 @@ public class MainActivity extends AppCompatActivity {
         //truquillo para saber si la base de datos existe
         File dbpath = getDatabasePath("MiDB");
         boolean existe_bd = dbpath.exists();
+        Button boton_cargar = findViewById(R.id.btncargar);
         Button boton_mostrar = findViewById(R.id.butonmostrar);
+        boton_cargar.setEnabled(!dbpath.exists());
         boton_mostrar.setEnabled(dbpath.exists());
     }
 
     public void cargarDatos(View view) {
-
         //creo el objeto de la base de datos
         this.baseDatosCochesPersona = new BaseDatosCochesPersona(this, "MiDB", null, 1);
 
         Persona persona1 = new Persona(1, "Juan");
         Persona persona2 = new Persona(2, "Conchi");
         Persona persona3 = new Persona(3, "Manolo");
-
         //inserto las personas
         baseDatosCochesPersona.insertarPersona(persona1);
         baseDatosCochesPersona.insertarPersona(persona2);
@@ -53,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         Coche coche1 = new Coche("Ferrari", persona2);
         Coche coche2 = new Coche("Renault", persona2);
         Coche coche3 = new Coche("Fiat", persona1);
-
         //inserto los coches
         baseDatosCochesPersona.insertarCoche(coche1);
         baseDatosCochesPersona.insertarCoche(coche2);
@@ -62,16 +63,11 @@ public class MainActivity extends AppCompatActivity {
         //TODO cojer el botón de mostrar y habilitarlo
         Button boton_mostrar = findViewById(R.id.butonmostrar);
         boton_mostrar.setEnabled(true);
-
-
     }
 
     public void mostrarDatos(View view) {
-
         Intent intent = new Intent(this, MuestraCochesActivity.class);
         startActivity(intent);
-
     }
-
 
 }
