@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         //truquillo para saber si la base de datos existe
         File dbpath = getDatabasePath("MiDB");
         boolean existe_bd = dbpath.exists();
-        Button boton_cargar = findViewById(R.id.btncargar);
-        Button boton_mostrar = findViewById(R.id.butonmostrar);
+        boton_cargar = findViewById(R.id.btncargar);
+        boton_mostrar = findViewById(R.id.butonmostrar);
         boton_cargar.setEnabled(!dbpath.exists());
         boton_mostrar.setEnabled(dbpath.exists());
     }
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         baseDatosCochesPersona.insertarCoche(coche3);
 
         //TODO cojer el botón de mostrar y habilitarlo
-        Button boton_mostrar = findViewById(R.id.butonmostrar);
+        boton_cargar.setEnabled(false);
         boton_mostrar.setEnabled(true);
     }
 
