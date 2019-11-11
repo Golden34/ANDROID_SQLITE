@@ -25,7 +25,8 @@ public class CocheHolder extends RecyclerView.ViewHolder {
 
 
     public void cargarCocheHolder(Coche coche) {
-        Log.d("MIAPP", coche.getId() + " " + coche.getModelo());
+        //Log.d("MIAPP", coche.getId() + " " + coche.getModelo());
+        Log.d("MIAPP", coche.toString());
         text_id.setText(coche.getId() + " ");
         text_modelo.setText(coche.getModelo());
     }
